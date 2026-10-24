@@ -1,11 +1,26 @@
 # Agent Collab Kit
 
+[![PyPI](https://img.shields.io/pypi/v/agent-collab-kit)](https://pypi.org/project/agent-collab-kit/)
+[![Python](https://img.shields.io/pypi/pyversions/agent-collab-kit)](https://pypi.org/project/agent-collab-kit/)
+[![CI](https://github.com/kanibal-studio/agent-collab-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/kanibal-studio/agent-collab-kit/actions/workflows/ci.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/kanibal-studio/agent-collab-kit/blob/main/LICENSE)
+
 A small Python 3.10+ standard-library tool for cooperative work on one trusted
 machine: durable messages, explicit acknowledgements, and leases for exact
 resource names. Inspired by operational patterns, this is an original standalone
 implementation, not an export of a production system. It runs without a provider,
 agent framework, cloud service, Git execution, or automatic orchestration.
 It does not claim a new coordination model.
+
+## Install
+
+```sh
+pip install agent-collab-kit
+agent-collab --help
+```
+
+The package installs the `agent-collab` command, the same CLI as `python3 agent_collab.py`.
+It has no dependency outside the Python standard library.
 
 ## Try it with an isolated database
 
@@ -99,6 +114,8 @@ the same database, kept outside any repository:
 mkdir -p ~/.agent-collab
 python3 /path/to/agent_collab.py --db ~/.agent-collab/team.db init
 ```
+
+With the package installed, `agent-collab --db ~/.agent-collab/team.db init` does the same.
 
 A short block in each project's `CLAUDE.md` is enough for the sessions to use it:
 

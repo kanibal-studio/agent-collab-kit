@@ -1,6 +1,6 @@
 """Cooperative mail and exact-resource leases for a trusted local machine."""
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 import argparse
 from contextlib import contextmanager
