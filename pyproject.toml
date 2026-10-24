@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-collab-kit"
+dynamic = ["version"]
+description = "Local SQLite mailbox, acknowledgements and cooperative leases for AI agents on one trusted machine. Python standard library only."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "ALTA VISTA360, S.L.U." }]
+keywords = [
+    "ai-agents",
+    "multi-agent",
+    "coordination",
+    "sqlite",
+    "mailbox",
+    "leases",
+    "claude-code",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development",
+]
+
+[project.scripts]
+agent-collab = "agent_collab:main"
+
+[project.urls]
+Homepage = "https://github.com/kanibal-studio/agent-collab-kit"
+Issues = "https://github.com/kanibal-studio/agent-collab-kit/issues"
+PyPI = "https://pypi.org/project/agent-collab-kit/"
+
+[tool.setuptools]
+py-modules = ["agent_collab"]
+
+[tool.setuptools.dynamic]
+version = { attr = "agent_collab.__version__" }
