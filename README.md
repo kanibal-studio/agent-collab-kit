@@ -90,6 +90,33 @@ in artifacts the agent actually consumes. Its triage example is fictional.
 The kit coordinates this loop through mail and exact-resource claims; it does
 not train models or authorize operational actions automatically.
 
+## Use with Claude Code
+
+Run one Claude Code session per worker on the same machine and give every session
+the same database, kept outside any repository:
+
+```sh
+mkdir -p ~/.agent-collab
+python3 /path/to/agent_collab.py --db ~/.agent-collab/team.db init
+```
+
+A short block in each project's `CLAUDE.md` is enough for the sessions to use it:
+
+```markdown
+## Coordination
+- At the start of a task, read your mail:
+  `python3 /path/to/agent_collab.py --db ~/.agent-collab/team.db inbox --recipient <your-name>`,
+  then acknowledge each message you have handled with `ack`.
+- Before editing a file, claim its exact path with `claim --resource <path> --owner <your-name> --ttl 900`,
+  renew with the returned generation while you work, and `release` it when done.
+- If a claim is refused, do not edit that file: `send` a message to the current owner instead.
+- Only the integrator commits, after claiming `__commit__`.
+```
+
+Each session runs these commands through its usual shell tool, so your permission
+settings still apply. The leases stay cooperative: they guide sessions that follow
+the instruction and do not stop one that ignores it.
+
 ## Project context and license
 
 Prepared by [Kanibal Studio](https://github.com/kanibal-studio), associated with
